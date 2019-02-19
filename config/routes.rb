@@ -7,8 +7,19 @@ Rails.application.routes.draw do
 
 
   # Read the details of one restaurant
-  get 'task/:id', to: 'tasks#show'
+  get 'task/:id', to: 'tasks#show', as: "task"
+
+  # create a restaurant 2 REQUESTS
+  get 'tasks/new', to: 'tasks#new', as: "new"
+  post 'tasks', to: "tasks#create"
+
+  # update a restaurant
+  get 'task/:id/edit', to: 'tasks#edit', as: "edit"
+  patch 'task/:id', to: 'tasks#update'
 
 
+  # delete a restaurant
+  delete 'task/:id', to: 'tasks#destroy'
 
 end
+

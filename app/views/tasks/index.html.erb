@@ -3,9 +3,13 @@
 <% @tasks.each do |task| %>
   <% if task.completed %>
     <input type="checkbox" checked>
-  <%elsif%>
+  <%else%>
     <input type="checkbox">
   <% end %>
-  <%=task.title%>
+  <h1><%= link_to task.title, task_path(task) %></h1>
   <br>
+  <%= link_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
+<br>
+
+<%= link_to "Add a new Task", new_path(@task) %>
